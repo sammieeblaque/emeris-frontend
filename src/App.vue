@@ -1,15 +1,18 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <section class="bg-red-500 min-h-screen pt-40">
+    <Address />
+    <swap-card />
+  </section>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
+import Address from "./components/Address.vue";
+import SwapCard from "./components/SwapCard.vue";
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    Address,
+    SwapCard,
   },
 };
 </script>
@@ -21,6 +24,17 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin: 0;
+  padding: 0;
+}
+
+/* body {
+  background-color: #d7d7d74f;
+} */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  outline: none;
 }
 </style>
