@@ -1,18 +1,35 @@
 <template>
-  <section class="bg-red-500 min-h-screen pt-40">
+  <section class="bg-white dark:bg-black min-h-screen pt-40">
+    <toggle-button />
     <Address />
     <swap-card />
   </section>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Address from "./components/Address.vue";
 import SwapCard from "./components/SwapCard.vue";
+import ToggleButton from "./components/ToggleButton.vue";
 export default {
   name: "App",
   components: {
     Address,
     SwapCard,
+    ToggleButton,
+  },
+  beforeMount() {
+    this.$store.dispatch("initTheme");
+  },
+  computed: {
+    ...mapGetters({ theme: "getTheme" }),
+  },
+  watch: {
+    theme(newTheme) {
+      newTheme === "light"
+        ? document.querySelector("html").classList.remove("dark")
+        : document.querySelector("html").classList.add("dark");
+    },
   },
 };
 </script>
