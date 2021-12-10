@@ -1,22 +1,25 @@
 <template>
-  <section class="bg-white dark:bg-black min-h-screen pt-40">
-    <toggle-button />
-    <Address />
-    <swap-card />
+  <section class="bg-white dark:bg-black min-h-screen">
+    <!-- <toggle-button /> -->
+    <token-modal />
+    <!-- <Address />
+    <swap-card /> -->
   </section>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import Address from "./components/Address.vue";
-import SwapCard from "./components/SwapCard.vue";
-import ToggleButton from "./components/ToggleButton.vue";
+// import Address from "./components/Address.vue";
+// import SwapCard from "./components/SwapCard.vue";
+// import ToggleButton from "./components/ToggleButton.vue";
+import TokenModal from "./components/TokenModal.vue";
 export default {
   name: "App",
   components: {
-    Address,
-    SwapCard,
-    ToggleButton,
+    // Address,
+    // SwapCard,
+    // ToggleButton,
+    TokenModal,
   },
   beforeMount() {
     this.$store.dispatch("initTheme");

@@ -57,7 +57,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style>
 .center {
   margin: 0 auto;
 }

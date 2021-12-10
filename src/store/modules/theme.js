@@ -2,12 +2,6 @@ export default {
   state: {
     theme: {},
   },
-  mutations: {
-    SET_THEME(state, theme) {
-      state.theme = theme;
-      localStorage.theme = theme;
-    },
-  },
   actions: {
     initTheme({ commit }) {
       const cachedTheme = localStorage.theme ? localStorage.theme : false;
@@ -32,9 +26,13 @@ export default {
       }
     },
   },
-  getters: {
-    getTheme: (state) => {
-      return state.theme;
+  mutations: {
+    SET_THEME(state, theme) {
+      state.theme = theme;
+      localStorage.theme = theme;
     },
+  },
+  getters: {
+    getTheme: (state) => state.theme,
   },
 };

@@ -1,5 +1,6 @@
 import Vuex from "vuex";
 import theme from "./modules/theme";
+import tokens from "./modules/tokens";
 
 export default new Vuex.Store({
   state: {},
@@ -7,5 +8,6 @@ export default new Vuex.Store({
   actions: {},
   modules: {
     theme,
+    tokens,
   },
 });
