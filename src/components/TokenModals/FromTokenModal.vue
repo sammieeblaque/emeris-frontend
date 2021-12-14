@@ -10,13 +10,6 @@
         ></span>
       </div>
     </section>
-    <section class="mt-3">
-      <input
-        type="text"
-        placeholder="Search name"
-        class="w-full p-2 rounded-xl focus:ring-2 focus:ring-gray-600"
-      />
-    </section>
     <section class="mt-2">
       <div class="text-left">
         <ol>
