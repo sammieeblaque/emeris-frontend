@@ -1,5 +1,6 @@
 import { tokens } from "../../data/tokens.json";
 import { pools } from "../../data/pools.json";
+import { balances } from "../../data/balances.json";
 export default {
   namespaced: true,
   state: {
@@ -11,6 +12,7 @@ export default {
     temp_token1: "",
     temp_token2: "",
     pools: pools,
+    balances: balances,
   },
   actions: {
     toggleFromModal({ commit }) {
@@ -64,5 +66,6 @@ export default {
     token1: (state) => state.token1,
     token2: (state) => state.token2,
     pools: (state) => state.pools,
+    balances: (state) => state.balances,
   },
 };

@@ -23,6 +23,9 @@
         />
       </div>
     </section>
+    <div class="text-red-700 font-normal text-xs pr-2 text-right">
+      {{ amount > balance && amount.length >= 1 ? "Balance Insufficient" : "" }}
+    </div>
     <div>
       <switch-vertical-icon
         @click="swapTokens"
@@ -64,7 +67,7 @@
 <script>
 import { ChevronDownIcon } from "@heroicons/vue/solid";
 import { SwitchVerticalIcon } from "@heroicons/vue/solid";
-import { pools } from "../data/pools.json";
+// import { pools } from "../data/pools.json";
 import { mapGetters } from "vuex";
 export default {
   components: {
@@ -77,15 +80,19 @@ export default {
       info: null,
       error: "",
       displayValue: null,
+      balance: null,
     };
   },
   watch: {
     amount() {
-      if (this.amount.length >= 1) this.checkPools();
+      if (this.amount.length >= 1) {
+        this.checkPools();
+        this.checkBalance();
+      }
     },
   },
   computed: {
-    ...mapGetters("tokens", ["token1", "token2", "pools"]),
+    ...mapGetters("tokens", ["token1", "token2", "pools", "balances"]),
   },
   methods: {
     toggleToTokenModal() {
@@ -99,11 +106,19 @@ export default {
     },
     checkPools() {
       if (this.token1 && this.token2 !== "Select Asset" && this.amount !== "") {
-        const data = pools.filter((pool) => {
+        const data = this.pools.filter((pool) => {
           return pool.tokenA === this.token1 && pool.tokenB === this.token2;
         });
         this.info = data[0]?.price;
         this.displayValue = this.info * this.amount;
+      }
+    },
+    checkBalance() {
+      if (this.token1) {
+        const data = this.balances.filter(
+          (balance) => balance.token === this.token1
+        );
+        this.balance = data[0]?.balance;
       }
     },
   },
