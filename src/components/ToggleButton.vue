@@ -1,12 +1,12 @@
 <template>
-  <div class="pl-20">
+  <div class="pl-20 pt-5">
     <input
       type="checkbox"
       @click="toggleTheme"
-      class="checkbox cursor-pointer"
+      class="checkbox"
       id="checkbox"
     />
-    <label for="checkbox" class="label">
+    <label for="checkbox" class="label cursor-pointer">
       <i class="fas fa-moon"></i>
       <i class="fas fa-sun"></i>
       <div class="ball"></div>

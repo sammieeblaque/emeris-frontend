@@ -1,6 +1,6 @@
 <template>
   <section
-    class="mt-20 bg-gray-200 shadow-xl rounded-2xl w-1/3 h-full center p-4"
+    class="mt-20 bg-gray-200 shadow-xl rounded-2xl w-1/3 h-full p-4 mx-auto"
   >
     <h1 class="text-left text-2xl font-bold">Swap</h1>
     <!-- Top section FROM -->
@@ -8,17 +8,23 @@
       class="mt-5 flex justify-between items-center p-6 bg-white rounded-2xl"
     >
       <div
+        @click="toggleFromTokenModal"
         class="flex justify-between items-center bg-gray-200 rounded-xl shadow-xl px-4 py-2 cursor-pointer hover:bg-gray-300"
       >
-        <div class="text-black font-semibold">USDT</div>
+        <div class="text-black font-semibold">{{ token1 }}</div>
         <div><chevron-down-icon class="h-6 pl-3" /></div>
       </div>
       <div class="pr-2">
-        <input type="text" placeholder="0.0" class="text-right text-2xl" />
+        <input
+          type="text"
+          placeholder="0.0"
+          class="text-right text-2xl w-full"
+        />
       </div>
     </section>
     <div>
       <switch-vertical-icon
+        @click="swapTokens"
         class="h-8 m-auto text-white text-center -mb-4 border-gray-400 border-2 rounded-xl cursor-pointer"
       />
     </div>
@@ -28,8 +34,9 @@
     >
       <div
         class="flex justify-between items-center bg-gray-200 rounded-xl shadow-xl px-4 py-2 cursor-pointer hover:bg-gray-300"
+        @click="toggleToTokenModal"
       >
-        <div class="text-black font-semibold">Select asset</div>
+        <div class="text-black font-semibold">{{ token2 }}</div>
         <div><chevron-down-icon class="h-6 pl-3" /></div>
       </div>
       <div class="pr-2">
@@ -49,11 +56,25 @@
 <script>
 import { ChevronDownIcon } from "@heroicons/vue/solid";
 import { SwitchVerticalIcon } from "@heroicons/vue/solid";
-
+import { mapGetters } from "vuex";
 export default {
   components: {
     ChevronDownIcon,
     SwitchVerticalIcon,
+  },
+  computed: {
+    ...mapGetters("tokens", ["token1", "token2"]),
+  },
+  methods: {
+    toggleToTokenModal() {
+      this.$store.dispatch("tokens/toggleToModal");
+    },
+    toggleFromTokenModal() {
+      this.$store.dispatch("tokens/toggleFromModal");
+    },
+    swapTokens() {
+      this.$store.dispatch("tokens/swapTokens");
+    },
   },
 };
 </script>

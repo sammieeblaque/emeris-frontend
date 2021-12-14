@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <h2 class="italic dark:text-white">Address: {{ formatAddress }}</h2>
-  </div>
+  <section class="pt-5">
+    <h2 class="italic dark:text-white font-semibold">
+      Address: {{ formatAddress }}
+    </h2>
+  </section>
 </template>
 
 <script>

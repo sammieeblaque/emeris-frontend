@@ -1,38 +1,15 @@
 <template>
-  <section class="bg-white dark:bg-black min-h-screen">
-    <!-- <toggle-button /> -->
-    <token-modal />
-    <!-- <Address />
-    <swap-card /> -->
+  <section class="min-h-screen bg-white dark:bg-gray-900">
+    <Layout />
   </section>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-// import Address from "./components/Address.vue";
-// import SwapCard from "./components/SwapCard.vue";
-// import ToggleButton from "./components/ToggleButton.vue";
-import TokenModal from "./components/TokenModal.vue";
+import Layout from "./views/Layout.vue";
 export default {
   name: "App",
   components: {
-    // Address,
-    // SwapCard,
-    // ToggleButton,
-    TokenModal,
-  },
-  beforeMount() {
-    this.$store.dispatch("initTheme");
-  },
-  computed: {
-    ...mapGetters({ theme: "getTheme" }),
-  },
-  watch: {
-    theme(newTheme) {
-      newTheme === "light"
-        ? document.querySelector("html").classList.remove("dark")
-        : document.querySelector("html").classList.add("dark");
-    },
+    Layout,
   },
 };
 </script>
