@@ -45,7 +45,7 @@ export default {
     ...mapGetters("tokens", ["tokens"]),
   },
   methods: {
-    closeModal() {
+    closeFromModal() {
       this.$store.dispatch("tokens/closeFromModal");
     },
     selectToken(token) {

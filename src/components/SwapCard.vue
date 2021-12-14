@@ -19,6 +19,7 @@
           type="text"
           placeholder="0.0"
           class="text-right text-2xl w-full"
+          v-model="amount"
         />
       </div>
     </section>
@@ -41,7 +42,9 @@
       </div>
       <div class="pr-2">
         <!-- <input type="text" placeholder="0.0" class="text-right text-2xl" /> -->
-        <span class="text-2xl text-gray-400">0.00</span>
+        <span class="text-2xl text-gray-400">{{
+          info && amount >= 1 ? displayValue : "0.00"
+        }}</span>
       </div>
     </section>
     <section class="my-4">
@@ -51,19 +54,38 @@
         PERFORM SWAP
       </button>
     </section>
+    <section class="text-red-700">
+      {{
+        info === undefined && amount.length >= 1 ? "Does not exist in pool" : ""
+      }}
+    </section>
   </section>
 </template>
 <script>
 import { ChevronDownIcon } from "@heroicons/vue/solid";
 import { SwitchVerticalIcon } from "@heroicons/vue/solid";
+import { pools } from "../data/pools.json";
 import { mapGetters } from "vuex";
 export default {
   components: {
     ChevronDownIcon,
     SwitchVerticalIcon,
   },
+  data() {
+    return {
+      amount: "",
+      info: null,
+      error: "",
+      displayValue: null,
+    };
+  },
+  watch: {
+    amount() {
+      if (this.amount.length >= 1) this.checkPools();
+    },
+  },
   computed: {
-    ...mapGetters("tokens", ["token1", "token2"]),
+    ...mapGetters("tokens", ["token1", "token2", "pools"]),
   },
   methods: {
     toggleToTokenModal() {
@@ -74,6 +96,15 @@ export default {
     },
     swapTokens() {
       this.$store.dispatch("tokens/swapTokens");
+    },
+    checkPools() {
+      if (this.token1 && this.token2 !== "Select Asset" && this.amount !== "") {
+        const data = pools.filter((pool) => {
+          return pool.tokenA === this.token1 && pool.tokenB === this.token2;
+        });
+        this.info = data[0]?.price;
+        this.displayValue = this.info * this.amount;
+      }
     },
   },
 };
