@@ -30,7 +30,7 @@ export default {
       if (text !== undefined) {
         first = text.substring(0, 6);
         end = text.substring(text.length, text.length - 4);
-        const full = `${first}...${end}...`;
+        const full = `${first}...${end}`;
         return full;
       }
     },

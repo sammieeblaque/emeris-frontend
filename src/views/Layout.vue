@@ -28,7 +28,7 @@ import FromTokenModal from "../components/TokenModals/FromTokenModal.vue";
 import ToTokenModal from "../components/TokenModals/ToTokenModal.vue";
 import ToggleButton from "../components/ToggleButton.vue";
 export default {
-  name: "App",
+  name: "Layout",
   components: {
     Address,
     SwapCard,
