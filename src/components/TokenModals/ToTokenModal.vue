@@ -1,5 +1,7 @@
 <template>
-  <section class="bg-gray-200 shadow-xl rounded-2xl w-1/4 h-auto p-4">
+  <section
+    class="bg-gray-200 shadow-xl rounded-2xl w-2/3 sm:w-2/5 md:w-1/3 lg:w-1/4 h-auto p-4"
+  >
     <section class="flex justify-between items-center">
       <div>
         <h2 class="tex-2xl font-bold">Select a token</h2>
