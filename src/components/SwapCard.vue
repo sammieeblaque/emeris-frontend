@@ -1,6 +1,6 @@
 <template>
   <section
-    class="mt-20 bg-gray-200 shadow-xl rounded-2xl w-1/3 h-full p-4 mx-auto"
+    class="mt-20 bg-gray-200 shadow-xl rounded-2xl w-11/12 sm:w-2/3 md:w-2/4 lg:w-1/3 h-full p-4 mx-auto"
   >
     <h1 class="text-left text-2xl font-bold">Swap</h1>
     <!-- Top section FROM -->
